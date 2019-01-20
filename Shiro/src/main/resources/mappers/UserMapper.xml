@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feifan.dao.UserMapper">
+	<sql id="userInfo">
+		id,username,gender,age,password,nickname,salt,create_time,modify_time,last_login_time
+	</sql>
+
+	
+	<!--  通过用户名id 查找用户信息 -->
+	<select id="findUserById" resultType="UserTo">
+
+	</select>
+
+	<!--  通过用户名查找用户信息 -->
+	<select id="findUserByUsername" resultType="UserTo">
+		select 
+			<include refid="userInfo"/>
+		 from 
+		 `user`
+		 where username = #{username}
+	</select>
+
+	<!-- 新增用户  获取新增主键-->
+	<insert id="insertUser" parameterType="UserTo" useGeneratedKeys="true" keyProperty="id">
+		insert into user (username,password,age,gender,salt,create_time,modify_time,last_login_time)
+		values
+		(#{username},#{password},#{age},#{gender},#{salt},#{createTime},#{modifyTime},#{lastLoginTime})
+		
+	</insert>
+
+	<!-- 更新用户信息 -->
+	<update id="updateUser" parameterType="UserTo">
+
+	</update>
+
+	<!-- 通过用户名查找权限 -->
+	<select id="findPermsByUsername" resultType="java.lang.String">
+		SELECT p.perms FROM permission p  WHERE p.id   
+		IN (  
+			SELECT pu.perms_id FROM perms_user pu  WHERE pu.user_id  
+			IN (
+				SELECT id FROM `user`  u WHERE u.username = #{username}
+				) 
+			)
+	</select>
+
+	<!-- 通过用户名查找角色 -->
+	<select id="findRolesByUsername"  resultType="java.lang.String" >
+	SELECT role FROM roles r WHERE r.id
+	IN (
+		SELECT role_id FROM role_user ru WHERE ru.user_id 
+		IN (
+			SELECT id FROM `user` u WHERE u.username = #{username}
+			)
+		)
+	</select>
+
+	<!-- 批量插入用户 -->
+	<insert id="insertUserList" parameterType="java.util.List">
+		insert into user (username,password,age,gender,salt,create_time,modify_time,last_login_time)
+		values
+		<foreach collection="list" item="user" separator=",">
+			(
+				#{user.username},
+				#{user.password},
+				#{user.age},
+				#{user.gender},
+				#{user.salt},
+				#{user.createTime},
+				#{user.modifyTime},
+				#{user.lastLoginTime}
+			)
+		</foreach>
+	</insert>
+
+</mapper>

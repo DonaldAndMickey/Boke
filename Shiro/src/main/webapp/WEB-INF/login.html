@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>登陆界面</title>
+<script src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/js/lib/jquery-1.10.2_1c4228b8.js"></script>
+</head>
+<body>
+	<h1 style="color:red">这是一个登陆界面</h1>
+	<button onclick="login()">登陆操作</button>
+	<script type="text/javascript">
+		function login() {
+			$.get("/service/login?username=wang3&password=password",function(){});
+		}
+	</script>
+</body>
+</html>
