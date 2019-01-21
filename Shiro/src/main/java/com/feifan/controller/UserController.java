@@ -78,6 +78,8 @@ public class UserController {
     @RequiresPermissions(value = {"system:user:delete"})
     public Object selectUser() {
         // userService.insertUserList(new ArrayList<>());
+        Subject subject = SecurityUtils.getSubject();
+        LOGGER.info("执行查询:{}:{}", subject.getPrincipal(), subject.getSession());
         return userMapper.findUserByUsername("wang3");
     }
 
