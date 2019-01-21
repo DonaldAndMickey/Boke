@@ -2,6 +2,7 @@ package com.feifan.configure;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.feifan.interceptor.MysqlInterceptor;
 
 /**
  * Mybatis 配置类 不通过springboot 使用自己配置的数据源
@@ -63,6 +65,8 @@ public class MyBatisConfig {
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(true);
         factoryBean.setConfiguration(configuration);
+        // 加入SQL 语句执行拦截器
+        factoryBean.setPlugins(new Interceptor[] {new MysqlInterceptor()});
         return factoryBean.getObject();
     }
 
