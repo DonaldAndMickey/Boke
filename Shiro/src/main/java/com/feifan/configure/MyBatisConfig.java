@@ -1,7 +1,7 @@
 package com.feifan.configure;
 
-import javax.sql.DataSource;
-
+import com.alibaba.druid.pool.DruidDataSource;
+import com.feifan.interceptor.MysqlInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -19,8 +19,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.feifan.interceptor.MysqlInterceptor;
+import javax.sql.DataSource;
 
 /**
  * Mybatis 配置类 不通过springboot 使用自己配置的数据源

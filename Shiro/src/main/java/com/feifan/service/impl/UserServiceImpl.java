@@ -1,10 +1,9 @@
 package com.feifan.service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
+import com.feifan.dao.UserMapper;
+import com.feifan.exception.GloableExecption;
+import com.feifan.service.UserService;
+import com.feifan.to.UserTo;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
@@ -12,10 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.feifan.dao.UserMapper;
-import com.feifan.exception.GloableExecption;
-import com.feifan.service.UserService;
-import com.feifan.to.UserTo;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 

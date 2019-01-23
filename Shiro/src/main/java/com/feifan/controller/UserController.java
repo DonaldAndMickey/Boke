@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,8 +46,8 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
-    @RequestMapping("/login")
-    public String login(UserTo userTo) {
+    @RequestMapping(value = "/login")
+    public String login(@RequestBody UserTo userTo) {
         LOGGER.info("开始执行登陆操作 username：{}，password:{}", userTo.getUsername(), userTo.getPassword());
         Subject subject = SecurityUtils.getSubject();// 创建用户实体
         System.err.println(subject.isRemembered() + "" + subject.isAuthenticated());
@@ -86,7 +87,7 @@ public class UserController {
     @RequestMapping("/insert")
     @ResponseBody
     @RequiresPermissions(value = {"system:user:insert"})
-    public Object insertUser(UserTo userTo) {
+    public Object insertUser(@RequestBody UserTo userTo) {
         Subject subject = SecurityUtils.getSubject();
         System.err.println("进来了");
         return userMapper.findUserByUsername("wang3");

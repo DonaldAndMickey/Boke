@@ -1,9 +1,9 @@
 package com.feifan.to;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.util.Date;
-
-import com.alibaba.fastjson.annotation.JSONField;
 
 public class UserTo implements Serializable {
 

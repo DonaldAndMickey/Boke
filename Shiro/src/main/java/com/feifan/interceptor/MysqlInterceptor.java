@@ -1,7 +1,5 @@
 package com.feifan.interceptor;
 
-import java.util.Properties;
-
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -17,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+
+import java.util.Properties;
 
 /**
  * Mybatis 拦截器 允许使用的插件来拦截的方法包括 Executor (update, query, flushStatements, commit, rollback, getTransaction, close,

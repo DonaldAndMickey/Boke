@@ -1,5 +1,6 @@
 package com.feifan.exception;
 
+import com.feifan.vo.ResultObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.ShiroException;
 import org.apache.shiro.authz.UnauthenticatedException;
@@ -9,8 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import com.feifan.vo.ResultObject;
 
 /**
  * 全局异常类

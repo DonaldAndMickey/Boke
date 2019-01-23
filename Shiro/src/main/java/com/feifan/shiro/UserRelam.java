@@ -1,7 +1,7 @@
 package com.feifan.shiro;
 
-import java.util.Set;
-
+import com.feifan.dao.UserMapper;
+import com.feifan.to.UserTo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -17,8 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.feifan.dao.UserMapper;
-import com.feifan.to.UserTo;
+import java.util.Set;
 
 /**
  * 

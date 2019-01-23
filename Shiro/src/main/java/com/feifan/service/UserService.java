@@ -1,9 +1,9 @@
 package com.feifan.service;
 
+import com.feifan.to.UserTo;
+
 import java.util.List;
 import java.util.Set;
-
-import com.feifan.to.UserTo;
 
 public interface UserService {
 
